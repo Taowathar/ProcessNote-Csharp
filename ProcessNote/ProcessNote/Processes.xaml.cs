@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace ProcessNote
 {
@@ -20,9 +21,29 @@ namespace ProcessNote
     /// </summary>
     public partial class Page1 : Page
     {
+
+        private Process[] _processes;
+
+        public Process[] Processes
+        {
+            get { return _processes; }
+        }
+
         public Page1()
         {
+            GetAllProcesses();
             InitializeComponent();
+        }
+
+        public void GetAllProcesses()
+        {
+            _processes = Process.GetProcesses();
+        }
+
+        public void RefreshProcess(int id)
+        {
+            var process = Processes.FirstOrDefault(p => p.Id == id);
+            process.Refresh();
         }
     }
 }
