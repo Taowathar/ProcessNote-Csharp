@@ -19,17 +19,17 @@ namespace ProcessNote
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Processes : Page
     {
 
         private Process[] _processes;
 
-        public Process[] Processes
+        public Process[] AllProcesses
         {
             get { return _processes; }
         }
 
-        public Page1()
+        public Processes()
         {
             GetAllProcesses();
             InitializeComponent();
@@ -42,8 +42,14 @@ namespace ProcessNote
 
         public void RefreshProcess(int id)
         {
-            var process = Processes.FirstOrDefault(p => p.Id == id);
+            var process = AllProcesses.FirstOrDefault(p => p.Id == id);
             process.Refresh();
+        }
+
+        public ProcessThreadCollection Threads (int id)
+        {
+            var process = AllProcesses.FirstOrDefault(p => p.Id == id);
+            return process.Threads;
         }
     }
 }
