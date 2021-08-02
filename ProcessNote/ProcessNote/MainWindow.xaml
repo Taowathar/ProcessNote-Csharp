@@ -15,5 +15,7 @@
             </TabItem>
         </TabControl>
 
+        <CheckBox Content="Always on top" HorizontalAlignment="Left" VerticalAlignment="Bottom" Checked="HandleCheck" Unchecked="HandleUnchecked" />
+
     </Grid>
 </Window>

@@ -23,5 +23,15 @@ namespace ProcessNote
         {
             InitializeComponent();
         }
+
+        private void HandleCheck(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HandleUnchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
