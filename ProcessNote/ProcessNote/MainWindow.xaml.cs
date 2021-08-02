@@ -27,11 +27,12 @@ namespace ProcessNote
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
 
+            this.Topmost = true;
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e)
         {
-
+            this.Topmost = false;
         }
     }
 }
