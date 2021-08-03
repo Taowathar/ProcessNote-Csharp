@@ -6,20 +6,22 @@
              xmlns:local="clr-namespace:ProcessNote"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    
-    
-    <ListView ItemsSource="{Binding Path=AllProcesses}" >
+
+
+    <ListView ItemsSource="{Binding Path=AllProcesses}">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Uid"  Value="{Binding Path=Id}"/>
+                <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
             </Style>
         </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView >
-                <GridViewColumn Header="Name"
-DisplayMemberBinding="{Binding Path=ProcessName}" />
-                <GridViewColumn Header="PID"
-DisplayMemberBinding="{Binding Path=Id}" />
+                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}" />
+                <GridViewColumn Header="PID" DisplayMemberBinding="{Binding Path=Id}" />
+                <GridViewColumn Header="RAM" DisplayMemberBinding="{Binding Path=VirtualMemorySize64}" />
+
             </GridView>
         </ListView.View>
     </ListView>
