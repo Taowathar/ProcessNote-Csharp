@@ -3,17 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:microsoftWindowsThemes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
         xmlns:local="clr-namespace:ProcessNote"
         
         
         mc:Ignorable="d"
         Title="Process Note" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <BulletDecorator Background="Transparent" SnapsToDevicePixels="true">
+                            <BulletDecorator.Bullet>
+                                <Border Background="#FFAEB3B9" BorderThickness="2" CornerRadius="10">
+                                    <microsoftWindowsThemes:BulletChrome IsChecked="{TemplateBinding IsChecked}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}"/>
+                                </Border>
+                            </BulletDecorator.Bullet>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </BulletDecorator>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>    
+    </Window.Resources>
+
     <Grid>
         <TabControl>
             <TabItem Header="Processes">
                 <local:Processes x:Name="ctrProcesses"/>
             </TabItem>
         </TabControl>
+
+        <CheckBox Content="Always on top" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"
+                  Style="{StaticResource CheckBoxStyle}"
+                  Checked="HandleCheck" Unchecked="HandleUnchecked" />
 
     </Grid>
 </Window>
