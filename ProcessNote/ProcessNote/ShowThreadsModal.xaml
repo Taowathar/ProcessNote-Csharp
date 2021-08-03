@@ -8,6 +8,16 @@
         Title="ShowThreadsModal" Height="300" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
 
     <Grid>
-
+        <ListView ItemsSource="{Binding Path=Threads}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}" />
+                    <GridViewColumn Header="Base Priority" DisplayMemberBinding="{Binding Path=BasePriority}" />
+                    <GridViewColumn Header="Thread State" DisplayMemberBinding="{Binding Path=ThreadState}" />
+                    <GridViewColumn Header="Start Address" DisplayMemberBinding="{Binding Path=StartAddress}" />
+                    <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding Path=StartTime}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
