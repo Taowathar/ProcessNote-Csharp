@@ -63,5 +63,10 @@ namespace ProcessNote
         {
             GetAllProcesses();
         }
+
+        private void GridViewColumn_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

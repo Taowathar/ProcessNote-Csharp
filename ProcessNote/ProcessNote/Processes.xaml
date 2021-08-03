@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:ProcessNote"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    
-    
-    <ListView ItemsSource="{Binding Path=AllProcesses}" >
+
+
+    <ListView ItemsSource="{Binding Path=AllProcesses}">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -17,9 +17,25 @@
         <ListView.View>
             <GridView >
                 <GridViewColumn Header="Name"
-DisplayMemberBinding="{Binding Path=ProcessName}" />
+DisplayMemberBinding="{Binding Path=ProcessName}"/>
+
                 <GridViewColumn Header="PID"
-DisplayMemberBinding="{Binding Path=Id}" />
+DisplayMemberBinding="{Binding Path=Id}"/>
+
+                <GridViewColumn Header="CPU Usage"
+DisplayMemberBinding="{Binding Path=TotalProcessorTime}"/>
+
+                <GridViewColumn Header="Memory Usage"
+DisplayMemberBinding="{Binding Path=VirtualMemorySize}"/>
+
+                <GridViewColumn Header="Running Time"
+DisplayMemberBinding="{Binding Path=Id}"/>
+
+                <GridViewColumn Header="Start Time"
+DisplayMemberBinding="{Binding Path=StartTime}"/>
+
+                <GridViewColumn Header="Threads"
+DisplayMemberBinding="{Binding Path=Threads}"/>
             </GridView>
         </ListView.View>
     </ListView>
