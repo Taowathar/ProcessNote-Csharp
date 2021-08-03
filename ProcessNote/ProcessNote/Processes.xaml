@@ -33,8 +33,13 @@ DisplayMemberBinding="{Binding Path=Id}"/>
                 <GridViewColumn Header="Start Time"
 DisplayMemberBinding="{Binding Path=StartTime}"/>
 
-                <GridViewColumn Header="Threads"
-DisplayMemberBinding="{Binding Path=Threads}"/>
+                <GridViewColumn Header="Threads">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Show Threads" Width="80" Height="20"></Button>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
