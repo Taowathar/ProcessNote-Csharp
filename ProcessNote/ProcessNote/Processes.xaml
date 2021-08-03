@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProcessNote"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="450" d:DesignWidth="1000" Loaded="UserControl_Loaded">
 
 
     <ListView ItemsSource="{Binding Path=AllProcesses}">
@@ -16,27 +16,34 @@
         </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView >
-                <GridViewColumn Header="Name" Width="300"
+                <GridViewColumn Header="Name" Width="200"
                                 DisplayMemberBinding="{Binding Path=ProcessName}" />
                 <GridViewColumn Header="PID" Width="50"
 DisplayMemberBinding="{Binding Path=Id}" />
 
-                <GridViewColumn Header="CPU Usage"
+                <GridViewColumn Header="CPU Usage" Width="110"
 DisplayMemberBinding="{Binding Path=TotalProcessorTime}"/>
 
-                <GridViewColumn Header="Memory Usage"
+                <GridViewColumn Header="Memory Usage" Width="90"
 DisplayMemberBinding="{Binding Path=VirtualMemorySize}"/>
 
-                <GridViewColumn Header="Running Time"
+                <GridViewColumn Header="Running Time" Width="80"
 DisplayMemberBinding="{Binding Path=Id}"/>
 
-                <GridViewColumn Header="Start Time"
+                <GridViewColumn Header="Start Time" Width="130"
 DisplayMemberBinding="{Binding Path=StartTime}"/>
 
                 <GridViewColumn Header="Threads">
                     <GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Show Threads" Width="80" Height="20"></Button>
+                        <DataTemplate >
+                            <Button Uid="{Binding Path=Id}" Content="Show Threads" Width="80" Height="20" Background="Yellow" BorderBrush="Black" BorderThickness="1" Click="ShowThreads">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
