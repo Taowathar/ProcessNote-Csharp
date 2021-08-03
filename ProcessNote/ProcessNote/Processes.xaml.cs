@@ -25,7 +25,7 @@ namespace ProcessNote
         
         private Process[] _processes;
 
-        public AllProcesses()
+        public Process[] AllProcesses
         {
             get { return _processes; }
         }
