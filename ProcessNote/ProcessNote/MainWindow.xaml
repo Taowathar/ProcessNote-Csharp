@@ -36,7 +36,7 @@
             </TabItem>
         </TabControl>
 
-        <CheckBox Content="Always on top" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"
+        <CheckBox Content="Always on top" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,33,10"
                   Style="{StaticResource CheckBoxStyle}"
                   Checked="HandleCheck" Unchecked="HandleUnchecked" />
 

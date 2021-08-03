@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using ProcessNote.Entities;
 
 namespace ProcessNote
 {
@@ -22,23 +23,28 @@ namespace ProcessNote
     public partial class Processes : UserControl
     {
 
-        
-        private Process[] _processes;
 
-        public Process[] AllProcesses
+        private ProcessCollection _processes;
+
+        public ProcessCollection AllProcesses
         {
             get { return _processes; }
         }
 
         public Processes()
         {
-            GetAllProcesses();
             InitializeComponent();
+            DataContext = this;
+            _processes = new ProcessCollection();
         }
 
         public void GetAllProcesses()
         {
-            _processes = Process.GetProcesses();
+           
+            foreach (var p in Process.GetProcesses())
+            {
+                _processes.Add(p);
+            }
         }
 
         public void RefreshProcess(int id)
@@ -47,10 +53,15 @@ namespace ProcessNote
             process.Refresh();
         }
 
-        public ProcessThreadCollection Threads (int id)
+        public ProcessThreadCollection Threads(int id)
         {
             var process = AllProcesses.FirstOrDefault(p => p.Id == id);
             return process.Threads;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetAllProcesses();
         }
     }
 }
