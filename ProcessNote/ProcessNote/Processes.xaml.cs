@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +17,15 @@ using System.Diagnostics;
 namespace ProcessNote
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Processes.xaml
     /// </summary>
-    public partial class Processes : Page
+    public partial class Processes : UserControl
     {
 
+        
         private Process[] _processes;
 
-        public Process[] AllProcesses
+        public AllProcesses()
         {
             get { return _processes; }
         }
