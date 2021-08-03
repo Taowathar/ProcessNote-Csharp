@@ -68,5 +68,13 @@ namespace ProcessNote
         {
 
         }
+
+        private void ShowThreads(object sender, RoutedEventArgs e)
+        {
+            Button processButton = sender as Button;
+            Trace.WriteLine(processButton.Uid);
+            ShowThreadsModal modalWindow = new ShowThreadsModal(Process.GetProcessById(int.Parse(processButton.Uid)));
+            modalWindow.ShowDialog();
+        }
     }
 }

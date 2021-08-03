@@ -20,6 +20,13 @@ namespace ProcessNote
     /// </summary>
     public partial class ShowThreadsModal : Window
     {
+        public ProcessThreadCollection Threads { get; }
 
+        public ShowThreadsModal(Process process)
+        {
+            InitializeComponent();
+            DataContext = this;
+            Threads = process.Threads;
+        }
     }
 }
