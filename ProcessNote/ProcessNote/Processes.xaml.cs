@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace ProcessNote
 {
@@ -20,9 +21,36 @@ namespace ProcessNote
     /// </summary>
     public partial class Processes : UserControl
     {
+
+        
+        private Process[] _processes;
+
+        public AllProcesses()
+        {
+            get { return _processes; }
+        }
+
         public Processes()
         {
+            GetAllProcesses();
             InitializeComponent();
+        }
+
+        public void GetAllProcesses()
+        {
+            _processes = Process.GetProcesses();
+        }
+
+        public void RefreshProcess(int id)
+        {
+            var process = AllProcesses.FirstOrDefault(p => p.Id == id);
+            process.Refresh();
+        }
+
+        public ProcessThreadCollection Threads (int id)
+        {
+            var process = AllProcesses.FirstOrDefault(p => p.Id == id);
+            return process.Threads;
         }
     }
 }
