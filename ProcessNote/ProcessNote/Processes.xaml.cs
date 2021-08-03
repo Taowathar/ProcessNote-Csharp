@@ -63,5 +63,12 @@ namespace ProcessNote
         {
             GetAllProcesses();
         }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Trace.WriteLine(sender);
+            ModalWindow modalWindow = new ModalWindow();
+            modalWindow.ShowDialog();
+        }
     }
 }
