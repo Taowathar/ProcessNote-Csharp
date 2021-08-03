@@ -16,9 +16,9 @@
         </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView >
-                <GridViewColumn Header="Name"
-DisplayMemberBinding="{Binding Path=ProcessName}" />
-                <GridViewColumn Header="PID"
+                <GridViewColumn Header="Name" Width="300"
+                                DisplayMemberBinding="{Binding Path=ProcessName}" />
+                <GridViewColumn Header="PID" Width="50"
 DisplayMemberBinding="{Binding Path=Id}" />
             </GridView>
         </ListView.View>
