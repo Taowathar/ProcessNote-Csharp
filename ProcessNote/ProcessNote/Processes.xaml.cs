@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using ProcessNote.Entities;
+using System.Threading;
+using System.Dynamic;
 
 namespace ProcessNote
 {
@@ -40,7 +42,7 @@ namespace ProcessNote
 
         public void GetAllProcesses()
         {
-           
+            _processes.Clear();
             foreach (var p in Process.GetProcesses())
             {
                 _processes.Add(p);
@@ -81,10 +83,29 @@ namespace ProcessNote
         {
             GetAllProcesses();
         }
-
-        private void GridViewColumn_Selected(object sender, RoutedEventArgs e)
+        
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            //ListViewItem l = sender as ListViewItem;
+            //var process = Process.GetProcessById(int.Parse(l.Uid));
+            //process.Refresh();
+            GetAllProcesses();
+        }
+       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Trace.WriteLine("asd");
+            Button b = sender as Button;
+            var p = Process.GetProcessById(int.Parse(b.Uid));
+            Comment commentWindow = new Comment(p);
+        }
+        
+        private void ShowThreads(object sender, RoutedEventArgs e)
+        {
+            Button processButton = sender as Button;
+            Trace.WriteLine(processButton.Uid);
+            ShowThreadsModal modalWindow = new ShowThreadsModal(Process.GetProcessById(int.Parse(processButton.Uid)));
+            modalWindow.ShowDialog();
         }
 
     }

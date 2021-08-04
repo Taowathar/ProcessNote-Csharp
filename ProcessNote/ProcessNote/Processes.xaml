@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProcessNote"
              xmlns:converters="clr-namespace:ProcessNote.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="450" d:DesignWidth="1000" Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <converters:StartTimeConverter x:Key="startTimeConverter"/>
@@ -19,11 +19,13 @@
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Uid"  Value="{Binding Path=Id}"/>
+                <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
             </Style>
         </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView >
-                <GridViewColumn Header="Name" Width="300"
+                <GridViewColumn Header="Name" Width="200"
                                 DisplayMemberBinding="{Binding Path=ProcessName}" />
                 <GridViewColumn Header="PID" Width="50"
 DisplayMemberBinding="{Binding Path=Id}" />
@@ -60,8 +62,20 @@ DisplayMemberBinding="{Binding Path=Id}" />
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
 
-                <GridViewColumn Header="Threads"
-DisplayMemberBinding="{Binding Path=Threads}"/>
+
+                <GridViewColumn Header="Threads">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate >
+                            <Button Uid="{Binding Path=Id}" Content="Show Threads" Width="80" Height="20" Background="Yellow" BorderBrush="Black" BorderThickness="1" Click="ShowThreads">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
