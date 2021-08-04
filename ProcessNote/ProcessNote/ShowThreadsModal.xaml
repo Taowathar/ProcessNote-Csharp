@@ -13,6 +13,8 @@
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Path=Id}" />
                     <GridViewColumn Header="Base Priority" DisplayMemberBinding="{Binding Path=BasePriority}" />
+                    <GridViewColumn Header="Current Priority" DisplayMemberBinding="{Binding Path=CurrentPriority}" />
+                    <GridViewColumn Header="Priority Boost" DisplayMemberBinding="{Binding Path=PriorityBoostEnabled}" />
                     <GridViewColumn Header="Thread State" DisplayMemberBinding="{Binding Path=ThreadState}" />
                     <GridViewColumn Header="Start Address" DisplayMemberBinding="{Binding Path=StartAddress}" />
                     <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding Path=StartTime}" />
