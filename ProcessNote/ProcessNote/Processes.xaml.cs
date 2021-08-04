@@ -65,8 +65,7 @@ namespace ProcessNote
         {
             GetAllProcesses();
         }
-
-
+        
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //ListViewItem l = sender as ListViewItem;
