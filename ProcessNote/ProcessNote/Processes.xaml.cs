@@ -27,6 +27,7 @@ namespace ProcessNote
 
 
         private ProcessCollection _processes;
+        private Dictionary<int, CommentCollection> comments;
 
         public ProcessCollection AllProcesses
         {
@@ -38,6 +39,7 @@ namespace ProcessNote
             InitializeComponent();
             DataContext = this;
             _processes = new ProcessCollection();
+            initComments();
         }
 
         public void GetAllProcesses()
@@ -46,6 +48,15 @@ namespace ProcessNote
             foreach (var p in Process.GetProcesses())
             {
                 _processes.Add(p);
+            }
+        }
+
+        public void initComments()
+        {
+            comments = new Dictionary<int, CommentCollection>();
+            foreach (var p in Process.GetProcesses())
+            {
+                comments[p.Id] = new CommentCollection();
             }
         }
 
@@ -94,10 +105,10 @@ namespace ProcessNote
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Trace.WriteLine("asd");
-            Button b = sender as Button;
-            var p = Process.GetProcessById(int.Parse(b.Uid));
-            Comment commentWindow = new Comment(p);
+            Button commentButton = sender as Button;
+            var id =int.Parse(commentButton.Uid);
+            CommentModal commentWindow = new CommentModal(id, comments[id]);
+            commentWindow.ShowDialog();
         }
         
         private void ShowThreads(object sender, RoutedEventArgs e)

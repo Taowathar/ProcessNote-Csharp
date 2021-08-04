@@ -76,6 +76,19 @@ DisplayMemberBinding="{Binding Path=Id}" />
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
+                <GridViewColumn Header="Comments">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate >
+                            <Button Uid="{Binding Path=Id}" Content="Show Comments" Width="100" Height="20" Background="LightBlue" BorderBrush="Black" BorderThickness="1" Click="Button_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
