@@ -63,11 +63,14 @@ namespace ProcessNote
         {
             GetAllProcesses();
         }
-
-        private void GridViewColumn_Selected(object sender, RoutedEventArgs e)
+        
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            ListViewItem l = sender as ListViewItem;
+            var process = Process.GetProcessById(int.Parse(l.Uid));
+            process.Refresh();
         }
+
 
         private void ShowThreads(object sender, RoutedEventArgs e)
         {
