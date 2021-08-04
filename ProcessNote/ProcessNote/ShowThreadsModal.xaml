@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProcessNote"
         mc:Ignorable="d"
-        Title="ShowThreadsModal" Height="300" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+        Title="ShowThreadsModal" Height="300" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
 
     <Grid>
         <ListView ItemsSource="{Binding Path=Threads}">
