@@ -4,10 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProcessNote"
+             xmlns:converters="clr-namespace:ProcessNote.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
-
+    <UserControl.Resources>
+        <converters:StartTimeConverter x:Key="startTimeConverter"/>
+        <converters:RunningTimeConverter x:Key="runningTimeConverter"/>
+        <converters:CpuUsageConverter x:Key="cpuUsageConverter"/>
+        <converters:MemoryUsageConverter x:Key="memoryUsageConverter"/>
+    </UserControl.Resources>
+    
     <ListView ItemsSource="{Binding Path=AllProcesses}">
         <ListView.ItemContainerStyle>
             <Style TargetType="{x:Type ListViewItem}">
@@ -21,17 +28,37 @@
                 <GridViewColumn Header="PID" Width="50"
 DisplayMemberBinding="{Binding Path=Id}" />
 
-                <GridViewColumn Header="CPU Usage"
-DisplayMemberBinding="{Binding Path=TotalProcessorTime}"/>
+                <GridViewColumn Header="CPU Usage">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ProcessName, Converter={StaticResource cpuUsageConverter}}" TextAlignment="Right"></TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                <GridViewColumn Header="Memory Usage"
-DisplayMemberBinding="{Binding Path=VirtualMemorySize}"/>
+                <GridViewColumn Header="Memory Usage">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=VirtualMemorySize, Converter={StaticResource memoryUsageConverter}}" TextAlignment="Right"></TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                <GridViewColumn Header="Running Time"
-DisplayMemberBinding="{Binding Path=Id}"/>
+                <GridViewColumn Header="Running Time">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=StartTime, Converter={StaticResource runningTimeConverter}}" TextAlignment="Right"></TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
-                <GridViewColumn Header="Start Time"
-DisplayMemberBinding="{Binding Path=StartTime}"/>
+                <GridViewColumn Header="Start Time">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=StartTime, Converter={StaticResource startTimeConverter}}" TextAlignment="Right"></TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
 
                 <GridViewColumn Header="Threads"
 DisplayMemberBinding="{Binding Path=Threads}"/>

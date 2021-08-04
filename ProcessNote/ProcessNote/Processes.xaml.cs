@@ -59,6 +59,24 @@ namespace ProcessNote
             return process.Threads;
         }
 
+        public string RunningTime(DateTime start)
+        {
+            var nowHour = DateTime.Now.Hour;
+            int nowHourInMin = Convert.ToInt32(nowHour)*60;
+
+            var startHour = start.Hour;
+            int startHourInMin = Convert.ToInt32(startHour) * 60;
+
+
+
+            return Convert.ToString(nowHourInMin - startHourInMin)+" min";
+        }
+
+        public DateTime TimeNow()
+        {
+            return DateTime.Now;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             GetAllProcesses();
@@ -68,5 +86,6 @@ namespace ProcessNote
         {
 
         }
+
     }
 }
