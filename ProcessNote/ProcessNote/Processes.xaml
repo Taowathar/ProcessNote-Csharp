@@ -18,10 +18,25 @@
         </ListView.ItemContainerStyle>
         <ListView.View>
             <GridView >
-                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}" />
-                <GridViewColumn Header="PID" DisplayMemberBinding="{Binding Path=Id}" />
-                <GridViewColumn Header="RAM" DisplayMemberBinding="{Binding Path=VirtualMemorySize64}" />
-
+                <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding Path=ProcessName}" />
+                <GridViewColumn Header="PID" Width="50" DisplayMemberBinding="{Binding Path=Id}" />
+                <GridViewColumn Header="CPU Usage" DisplayMemberBinding="{Binding Path=TotalProcessorTime}"/>
+                <GridViewColumn Header="Memory Usage" DisplayMemberBinding="{Binding Path=WorkingSet64}"/>
+                <GridViewColumn Header="Running Time" DisplayMemberBinding="{Binding Path=Id}"/>
+                <GridViewColumn Header="Start Time" DisplayMemberBinding="{Binding Path=StartTime}"/>
+                <GridViewColumn Header="Threads" DisplayMemberBinding="{Binding Path=Threads}"/>
+                <GridViewColumn >
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Content="Show comments"
+                                Margin="0"
+                                VerticalAlignment="Center"
+                                Click="Button_Click"
+                                Uid="{Binding Path=Id}"></Button>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView>
